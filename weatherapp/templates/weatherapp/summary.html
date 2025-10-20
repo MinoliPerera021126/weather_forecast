@@ -1,0 +1,28 @@
+<html>
+    <head>
+        <title>Weather Summary</title>
+    </head>
+    <body>
+        <h1>Today's Weather Condition in</h1>
+        <form method="post">
+            {% csrf_token %} <!-- Cross-Site Reference: A security mechanism -->
+            {{ form.as_p}} <!-- Render the form fields as paragraphs -->
+            <button type="submit">Get Weather</button>
+        </form>
+
+        <h2>User wants to get the weather information for {{ city }}</h2>
+
+        <table border="1" style="width:50%; text-align:center;">
+            <tr>
+                <th>Temperature (in Celsius)</th>
+                <th>Condition</th>
+                <th>Icon</th>
+            </tr>
+            <tr>
+                <td>{{ citydata.temp }}</td>
+                <td>{{ citydata.condition }}</td>
+                <td><img src="https:{{ citydata.icon }}" alt="Weather Icon"></td>
+            </tr>
+        </table>
+    </body>
+</html>
